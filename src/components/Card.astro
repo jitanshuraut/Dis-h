@@ -1,0 +1,168 @@
+---
+export interface Props {
+	title: string;
+
+	href: string;
+}
+const data = [
+	{
+		para: "I need you to hold on Heaven is a place not too far away We all know I should be the one To say we all make mistakes we all make mistakes",
+		img: "https://github.com/jitanshuraut/Oosadhi-/blob/main/Services/pro.png",
+		titel: "Ayurveda Doctors",
+		background:
+			"https://image.tmdb.org/t/p/w500/78lPtwv72eTNqFW9COBYI0dWDJa.jpg",
+	},
+	{
+		para: "I need you to hold on Heaven is a place not too far away We all know I should be the one To say we all make mistakes we all make mistakes",
+		img: "pro.png",
+		titel: "HomeoPathy Doctors",
+		background: "bg.png",
+	},
+	{
+		para: "I need you to hold on Heaven is a place not too far away We all know I should be the one To say we all make mistakes we all make mistakes",
+		img: "pro.png",
+		titel: "Yoga Trainers",
+		background: "bg.png",
+	},
+	{
+		para: "I need you to hold on Heaven is a place not too far away We all know I should be the one To say we all make mistakes we all make mistakes",
+		img: "pro.png",
+		titel: "Diet Planners",
+		background: "bg.png",
+	},
+];
+const { href, title } = Astro.props;
+---
+
+<div
+style={{
+	backgroundColor: "#F8F4F3",
+	padding: "10px 0px 20px 00px",
+}}
+>
+
+<div class="service_container">
+	{
+		data.map((ele) => {
+			return (
+				<div
+					class="service_box"
+					style={{
+						backgroundImage: `url(${ele.background})`,
+					}}
+				>
+					<div class="text_move">
+						<h2 class="service_box_head">
+							{ele.titel}
+						</h2>
+						<p class="service_box_p">{ele.para}</p>
+					</div>
+				</div>
+			);
+		})
+	}
+</div>
+</div>
+<style>
+	@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&family=Teko:wght@300;400&display=swap");
+
+	.service_FEATURES {
+		text-align: center;
+		color: #02ad4f;
+		font-size: 25px;
+		font-family: "Teko", sans-serif;
+	}
+	.service_head {
+		text-align: center;
+		font-family: "Playfair Display", serif;
+		font-style: normal;
+		margin: 10px 0px 40px 0px;
+	}
+	.text_move {
+		position: relative;
+		top: 1000px;
+	
+	}
+
+	.service_container {
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.service_box_img {
+		width: 70px;
+		margin: 5px;
+	}
+	.service_box {
+		padding: 20px;
+
+		border-radius: 12px;
+		box-shadow: rgba(63, 63, 63, 0.2) 0px 2px 8px 0px;
+		background-color: white;
+		cursor: pointer;
+		overflow: hidden;
+
+		background-size: cover;
+	
+		background-repeat: no-repeat;
+	}
+	.service_box:hover .text_move {
+		transition: 0.5s;
+		top: 0px;
+		
+	}
+
+	.service_box:hover {
+		transition: 0.5s;
+		transform: scaleY(1.2);
+		background-position: center center !important;
+		color: white;
+	}
+	.service_box_head {
+		font-family: "Poppins", sans-serif;
+		font-size: 18px;
+		font-weight: 600;
+		padding-top: 10px;
+		margin: 5px;
+	}
+
+	.service_box_p {
+		font-family: "Poppins", sans-serif;
+		text-align: justify;
+		font-size: 14px;
+		margin: 20px 0px 0px 5px;
+	}
+	.service_btn {
+		font-family: "Teko", sans-serif;
+		border: none;
+		margin: 5px;
+		background-color: transparent;
+		color: #02ad4f;
+	}
+
+	@media only screen and (max-width: 600px) {
+		.service_container {
+			flex-direction: column;
+		}
+		.service_box {
+			width: 90%;
+			margin: auto;
+			margin-bottom: 20px;
+		}
+	}
+
+	@media screen and (min-device-width: 601px) and (max-device-width: 1024px) {
+		.service_box_p {
+			font-size: 8px;
+		}
+		.service_box_head {
+			font-size: 9.7px;
+		}
+		.service_box_img {
+			width: 30px;
+		}
+		.service_btn {
+			font-size: 8px;
+		}
+	}
+</style>
