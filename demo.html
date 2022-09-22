@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="list">
+		{
+			data.results.map((ele) => {
+				var img = `https://image.tmdb.org/t/p/original/${ele.poster_path}`;
+				return (
+					<div class="box">
+						<img src={img} class="list_box" alt="" />
+
+						<div class="col" style="width:{a}px">
+							<h3>{ele.title}</h3>
+							<p>{ele.overview.slice(0, 70) + "..."}</p>
+							<div class="blur" />
+						</div>
+					</div>
+				);
+			})
+		}
+	</div>
+</body>
+</html>

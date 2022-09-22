@@ -1,15 +1,59 @@
 ---
-export interface Props {
-	title: string;
-	url:string
+// console.log("Ankit.")
+// let posters = [];
 
-	
-}
+// let next = document.getElementById('next');
+// let pre = document.getElementById('previous');
+// let Heading = document.getElementById('infoHeading');
+// let movieInfo = document.getElementById('movieInfo')
+// let movieImg = document.getElementById('movieImg');
+// let counter = 0;
 
-const {  title,url } = Astro.props;
+// fetch("https://api.themoviedb.org/3/tv/popular?api_key=8c28daf36301d6c8db33a4ac345c093c&language=en-US&page=1")
+//                 .then(response => response.json())
+//                 .then(data => {
+//                   console.log(data.results);
+//                   console.log(data.results.length);
+//                   // for (let index = 0; index < data.results.length; index++) {
+//                   //   posters.push(data.results[index].name);
+//                   //   // console.log(posters)
+//                   // }
+//                   Heading.innerHTML = data.results[0].name;
+//                   movieInfo.innerHTML = data.results[0].overview;
+//                   movieImg.src = `https://image.tmdb.org/t/p/original/${data.results[0].backdrop_path}`;
+
+//                   next.addEventListener("click", () => {
+//                     counter++
+//                     if (counter == 19) {
+//                       counter = 0
+//                     }
+//                     Heading.innerHTML = data.results[counter].name;
+//                     movieInfo.innerHTML = data.results[counter].overview.slice(0,200) + '...';
+//                     movieImg.src = `https://image.tmdb.org/t/p/original/${data.results[counter].backdrop_path}`;
+//                     // cat.innerHTML = posters[counter].category;
+
+//                     // movieImg.src = posters[counter].img;
+
+//                   });
+
+//                   pre.addEventListener("click", () => {
+//                     counter--
+//                     if (counter == -1) {
+//                       counter = 19
+//                     }
+//                     Heading.innerHTML = data.results[counter].name;
+//                     movieInfo.innerHTML = data.results[counter].overview.slice(0,200) + '...';
+//                     movieImg.src = `https://image.tmdb.org/t/p/original/${data.results[counter].backdrop_path}`;
+//                   // cat.innerHTML = posters[counter].category;
+//                   // movieImg.src = posters[counter].img;
+
+//               })
+
+//                 })
+//                 .catch(error => console.error(error))
 
 // const response = await fetch(
-// 	url
+//     "https://api.themoviedb.org/3/tv/popular?api_key=8c28daf36301d6c8db33a4ac345c093c&language=en-US&page=1"
 // );
 // const data = await response.json();
 const results = [
@@ -332,132 +376,165 @@ const results = [
         vote_count: 8412,
     },
 ];
-
 ---
 
-<div class="final">
-<div class="title_head">
-	<h1 class="head">{title}</h1>
-</div>
+<div class="mainPoster">
+    <!-- <button id="previous"><i class="fa-solid fa-angle-left fa-2x"></i></button> -->
+    <div class="list">
+       
+{
+    results.map((ele)=>{
+        var img = `https://image.tmdb.org/t/p/original/${ele.backdrop_path}`;
+        return( <div class="box">
+                        <div class="info" style="width:{a}px">
+                            <h1>{ele.name}</h1>
+                            <h3>{ele.overview.slice(0,150)+"..."}</h3>
+                            
+                            <p class="date">{ele.first_air_date}</p>
+                             
+                        </div>
+                        <div class="blur"></div>
+                        <img src={img} class="list_box" alt="" />
+    
+                      
+                    </div>)
+    })
+}
 
-<div class="list">
-	{
-		results.map((ele) => {
-			var img = `https://image.tmdb.org/t/p/original/${ele.poster_path}`;
-			var name=ele.title
-			var ext=ele.name
-			
-			
 
-			return (
-				<div class="box">
-					<img src={img} class="list_box" alt="" />
 
-					<div class="col" style="width:{a}px">
-						<h3>{name}{ext}</h3>
-						<p>{ele.overview.slice(0, 70) + "..."}</p>
-						 
-					</div>
-				</div>
-			);
-		})
-	}
-</div>
+                    <!-- <div class="box">
+                        <div class="info" style="width:{a}px">
+                            <h1>overview</h1>
+                            <h3>The Targaryen dynasty is at the absolute apex of its power, with more than 15 dragons under their yoke. Most empires crumble from such heights. In the case of the Targaryens, their slow fall begins when King Viserys breaks with a century of tradition by naming his daughter Rhaenyra heir to the Iron Throne. But when Viserys later fathers a son, the court is shocked when Rhaenyra retains her status as his heir, and seeds of division sow friction across the realm.</h3>
+                            
+                            <p class="date">first_air_date</p>
+                             
+                        </div>
+                        <div class="blur"></div>
+                        <img src='https://image.tmdb.org/t/p/original/Aa9TLpNpBMyRkD8sPJ7ACKLjt0l.jpg' class="list_box" alt="" />
+    
+                      
+                    </div> -->
+               
+    </div>
+    <!-- <button id="next"><i class="fa-solid fa-angle-right fa-2x"></i></button> -->
 </div>
 
 <style>
-	
-	.head{
-		margin-left: 40px;
-		color: white;
-		font-size: 33px;
-		font-family: "Roboto", sans-serif;
-		font-weight: 500;
-	}
-	.col {
-		visibility: hidden;
-		z-index: 30;
-		margin: 0px;
-		color: white;
-		background-image: linear-gradient(
-			180deg,
-			transparent,
-			rgb(3, 11, 23, 0.61),
-			rgb(3, 11, 23),
-			rgb(3, 11, 23),
-			rgb(3, 11, 23),
-			rgb(3, 11, 23),
-			#000
-		);
-		
-	}
-	.blur {
-		/* background: linear-gradient(to right, #030b17 , rgba(0,0,0,0));
-		height: 20px;
-		z-index: 1; */
-		background-image: linear-gradient(
-			180deg,
-			transparent,
-			rgb(3, 11, 23, 0.61),
-			rgb(3, 11, 23),
-			rgb(3, 11, 23),
-			rgb(3, 11, 23),
-			rgb(3, 11, 23),
-			#000
-		);
-		height: 1.3rem;
 
-		top: -115px;
-		z-index: -2;
-	}
-	.box {
-		margin-right: 30px;
-	}
-	.box:hover .col {
-		transition: 1.7s;
-		position: relative;
-		top: -110px;
-		visibility: visible;
-		height: 110px;
-		overflow: hidden;
-	}
-	.box:hover {
-		transition: 0.7s;
-		transform: scale(1.2);
-	}
-	
+.date{
+    font-family: "Roboto", sans-serif;
+    color: white;
+    margin-left: 30px;
+    width: 30%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color:#131927 ;
+}
+h1{
+    font-size: 40px;
+    margin-left: 30px;
+    color: white;
+    font-family: "Roboto", sans-serif;
+}
+h3{
+    width: 80%;
+    margin-left: 30px;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+	.box{
+        display: flex;
+        flex-direction: row;
+        padding: 40px;
+     background-color: #030b17;
+     margin-left: 170px;
+    }
 	
 	.list::-webkit-scrollbar {
 		display: none;
 	}
 	.list_box {
-		max-height: 350px;
+		max-height: 450px;
 		z-index: 1;
 		transition: 0.7s;
 		border-radius: 10px;
 	}
-	h3 {
-		font-family: "Roboto", sans-serif;
-		font-size: 15px;
-		width: 80%;
-		margin: auto;
-		margin-bottom: 10px;
-	}
-	p {
-		font-size: 13px;
-		font-family: "Roboto", sans-serif;
-		width: 80%;
-		margin: auto;
-	}
 	.list {
 		margin: 20px;
-		
-		
 		display: flex;
 		justify-content: space-between;
-		
-		
 		overflow-x: scroll;
 	}
-</style>
+   
 
+
+
+ 
+
+
+
+
+    .blur {
+        
+        background: linear-gradient(to right, #030b17, rgba(0, 0, 0, 0));
+        
+    
+        position: relative;
+        left: 30px;
+       z-index: 10;
+        width: 200px;
+    }
+
+  
+
+  
+
+   
+
+    @media only screen and (max-width: 700px) {
+        #movieImg {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            /* height: 500px; */
+            object-fit: contain;
+        }
+        .posterImg {
+            background-color: #121926;
+        }
+        .poster {
+            height: auto;
+        }
+        .navName {
+            display: none;
+        }
+        #logo {
+            /* padding: 15px 5px 0px 10px; */
+            height: 40px;
+        }
+        .navbar {
+            justify-content: space-around;
+            align-items: center;
+        }
+        .info {
+            display: none;
+        }
+        .blur {
+            display: none;
+        }
+
+        #next {
+            /* margin: 20px; */
+            padding: 5px;
+            font-size: 12px;
+        }
+        #previous {
+            padding: 5px;
+            font-size: 12px;
+        }
+    }
+</style>
