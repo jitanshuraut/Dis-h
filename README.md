@@ -1,5 +1,12 @@
 # Welcome to [Astro](https://astro.build)
 
+# screen shot
+
+<img width="947" alt="image" src="https://user-images.githubusercontent.com/96559286/191691739-5b79030a-21e8-491b-93ab-0935d0e5f1ab.png">
+<img width="947" alt="image" src="https://user-images.githubusercontent.com/96559286/191691993-84c774c2-fb3a-427a-9c69-4bfda9ff2843.png">
+
+
+
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
